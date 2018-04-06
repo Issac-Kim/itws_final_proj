@@ -1,44 +1,4 @@
-body{
-        font-family: monospace;
-        background-color: #000000;
-}
-    
-ul.homeHead{
-    
-    color: white;
-    text-align: left;
-    list-style-type: none;
-    
-        
-    
-}
 
-
-ul.navBar {
-    color: 	#db0000;
-    list-style: none;
-   
-    display: flex;
-    float: right;
-    
-    font-size: 10px;
-}
-
-ul.navBar li{
-     font-family: monospace;
-     border-bottom-color:#db0000;
-    border-bottom-style: ridge;
-    float: right;
-    font-size: 20px;
-    display: inline;
-    list-style-type: none;
-    margin-right: 10px;
-}
-
-ul.navBar a{
-    text-decoration: none;
-    color: #db0000;
-}
 
 ul.Entry div{
     width: 700px;
@@ -47,7 +7,6 @@ ul.Entry div{
 }
 
 ul.Entry label{
-    color: white;
     font-size: 10px;
     display:inline-block;
     width:75px;

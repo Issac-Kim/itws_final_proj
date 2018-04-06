@@ -4,16 +4,16 @@ body, html{
     width: 100%;
 }
 header {
-    background:#62C370;
+    background: #740e0e;
     position:fixed;
     top: 0;
     left: 0;
     width:100%;
-    height:70px;
+    height:110px;
     z-index:1;
 }
 #name {
-    width: 33%;
+    width: 32%;
     display: inline-block;
     color: #EBE9E9;
 }
@@ -23,41 +23,63 @@ header {
     text-decoration: none;
 }
 #location {
-    width: 33%;
+    width: 32%;
     display: inline-block;
     text-align: center;
     color: #EBE9E9;
+    
 }
-#navbar {
-    width: 33%;
+#login_register {
+    width: 34%;
     display: inline-block;
     text-align: right;
 }
 #line {
     color: #9F9AA4;
 }
-#navbar ul li{
+#login_register ul li{
     list-style-type: none;
     display: inline;
 }
-#navbar ul li a{
-    color: #EBE9E9;
+#login_register ul li a{
+    color: #ebe9e9;
     text-decoration: none;
 }
+#login_register ul li a:hover{
+    background-color:#f44b4b;
+    color: #000;
+}
+#navbar{
+    text-align: center;
+    color: #fff;
+    background-color: #f44b4b;
+}
+#navbar ul li{
+    list-style-type: none;
+    display: inline;
+    text-align: center;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+#navbar ul li a{
+    color: #ebe9e9;
+    text-decoration: none;
+    font-size: 22px;
+}
 #navbar ul li a:hover{
-    background-color: #AAFCB8;
-    color: #62C370;
+    background-color:#f44b4b;
+    color: #000;
 }
 #content{
     position: absolute;
-    top: 70px;
+    top: 94px;
     padding-bottom:70px;
     left:0;
 }
 
 footer {
     text-align: center;
-    background-color: #62C370;
+    background-color: #740e0e;
     color: #EBE9E9;
     padding-top: 0;
     margin-top: 0px;

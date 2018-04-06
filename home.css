@@ -1,0 +1,25 @@
+#charset "utf-8";
+
+#workouts {
+    width: 100%;
+}
+
+#categories{
+    width: 20%;
+    height: 100%;
+    display: inline-block;
+    border-right: 1px solid;
+}
+
+#workouts ul li{
+    list-style-type: none;
+}
+
+#category_list{
+    width: 79%;
+    display: inline-block;
+}
+
+#category{
+    text-align: center;
+}
