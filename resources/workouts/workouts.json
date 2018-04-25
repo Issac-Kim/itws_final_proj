@@ -1,0 +1,12 @@
+{
+    "workoutType":[
+	{
+	    "bodyPart": "Chest",
+	    "file": "chest.json"
+	},
+	{
+	    "bodyPart": "Abs",
+	    "file": "abs.json"
+	}
+    ]
+}
