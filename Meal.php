@@ -199,5 +199,3 @@
   // footer info and closing tags
 ?>
 
-
-
