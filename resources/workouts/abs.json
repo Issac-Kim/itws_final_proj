@@ -1,11 +1,26 @@
 
 {
-    "workout": [
-        {
-            "name_of_workout": "",
-            "areas_of_focus": "",
-            "description": "",
-            "instruction": ""
-        }
-    ]
+  "workout": [
+    {
+      "name_of_workout": "Situp",
+      "instruction": "1. Lie down flat on your back. <br> 2. Bend your knees, while keeping your feet flat on the ground. <br> 3. Cross your arms on your chest. <br> 4. Without using your legs or arms to assist in moving your body, bring your torso to your knees."
+    },
+    {
+      "name_of_workout": "Leg Raises",
+      "instruction": "1. Lie down flat on your back. <br> 2. Keep your arms flat on the ground on your side. <br> 3. Keep your legs straight and raise your feet up. <br> 4. Legs should be raised to about a 45 degree angle between your legs and the ground."
+    },
+    {
+      "name_of_workout": "Romanian Twist",
+      "instruction": "This can be done with weights held in the hands, such as a dumb bell, or without equipment. <br> 1. Lie flat on your back. <br> 2. Raise your feet off the ground with a bend in your knees. <br> 3. Raise your back off the ground so that the angle between the quads and stomach is about a right angle. <br> 3. Keep your hands together in front of your abs. <br> 4. Keeping balance, twist your body to the right and then twist to the left"
+    },
+    {
+      "name_of_workout": "Cable Crunch",
+      "instruction": "This requires a high pulley machine with rope attachment. <br> 1. Kneel down in front of the pulley and grab the rope with either end in each hand. <br> 2. Keep the rope behind your neck and pull it towards you so that your hands are aligned with your neck. <br> 3. Bring your body down towards the ground with the intention of touching the ground with your forehead. <br> 4. Slowly rise back up into the upright position."
+    },
+    {
+      "name_of_workout": "Woodchopper",
+      "instruction": "This can be done with weights held in the hands, such as a dumb bell, or without equipment. <br> 1. Hold your hands out together in front of you. <br> 2. Bring your hands to the right side of your body with your hands away from your body at hip level. <br> 3. Bring hands across to the left side of the body at head level. <br> 4. Repeat this repitition going from bottom right to top left."
+    }
+      
+  ]
 }

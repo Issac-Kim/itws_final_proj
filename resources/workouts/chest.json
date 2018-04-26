@@ -2,10 +2,16 @@
 {
     "workout": [
         {
-            "name_of_workout": "",
-            "areas_of_focus": "",
-            "description": "",
-            "instruction": ""
+            "name_of_workout": "Pushups",
+            "instruction": "1. Start by kneeling on the ground and set your hands slightly outside of your shoulder width. <br> 2. Lift your knees of the ground by setting your feet away from your torso so that the legs and torso are aligned in a line. <br> 3. Without moving your hands, slowly decline your body down towards the ground. <br> 4. Push your body back off of the ground"
+        },
+        {
+            "name_of_workout": "Bench",
+            "instruction": "This requires a bench, barbell, rack, and additional weights. <br> 1. With the barbell on the rack with approriate weights added to the barbell, place hands on the bar at slightly wider than shoulder width. <br> 2. Lift bar off of the rack. <br> 3. Slowly bring the bar down to your chest <br> 4. Push the bar off your chest so that your elbows are almost locked out."
+        },
+        {
+            "name_of_workout": "Incline Dumbell Press",
+            "instruction": "This requires a bench and two dumbell of equal weight. <br> 1. With the bench at a 45 degree angle, sit down on the bench. <br> 2. Lift dumbell and place them on each knee. <br> 3. Using your legs to help push up the dumbells, lift the dumbell over your head. <br> 4. Bring down the dumbell with your arms out so that your elbows go to a right angle. <br> 5. Push dumbells back up."
         }
     ]
 }
