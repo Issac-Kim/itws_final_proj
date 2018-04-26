@@ -1,26 +1,25 @@
 <?php 
-  include('includes/init.inc.php'); // include the DOCTYPE and opening tags
-  include('includes/functions.inc.php'); // functions
+  include('./resources/includes/init.inc.php'); // include the DOCTYPE and opening tags
+
 ?>
 <title>Meal Planner</title>   
 
 <?php 
-  include('includes/head.inc.php'); 
+  include('./resources/includes/head.inc.php'); 
   // include global css, javascript, end the head and open the body
 ?>
 
- 
-<?php include('includes/menubody.inc.php'); ?>
+
 
 <?php 
     @ $db = new mysqli('localhost', 'root', '', 'upYourGains');
     if ($db->connect_error) {
         echo '<div class="messages">Could not connect to the database. Error: ';
         echo $db->connect_errno . ' - ' . $db->connect_error . '</div>';
+    }else {
+     $dbOk = true; 
     }
-      /* some very basic form processing */
-
-      // variables to hold our form values:
+  
       $userName='';
       $mealType = '';  
       $foodGroup = '';
@@ -33,13 +32,11 @@
       // hold any error messages
       $errors = ''; 
 
-      // have we posted?
+    
       $havePost = isset($_POST["save"]);
 
       if ($havePost) {
-        // Get the input and clean it.
-        // First, let's get the input one param at a time.
-        // Could also output escape with htmlentities()
+  
         $mealType = htmlspecialchars(trim($_POST["mealType"]));  
         $foodGroup = htmlspecialchars(trim($_POST["foodGroup"]));
         $macros =htmlspecialchars(trim($_POST["macros"]));
@@ -48,12 +45,10 @@
         $date = htmlspecialchars(trim($_POST["date"]));
 
 
-        // special handling for the date of birth
-        $dateTime = strtotime($date); // parse the date of birth into a Unix timestamp (seconds since Jan 1, 1970)
-        $dateFormat = 'Y-m-d'; // the date format we expect, yyyy-mm-dd
-        // Now convert the $dobTime into a date using the specfied format.
-        // Does the outcome match the input the user supplied?  
-        // The right side will evaluate true or false, and this will be assigned to $dobOk
+    
+        $dateTime = strtotime($date);
+        $dateFormat = 'Y-m-d';
+          
         $dateOk = (date($dateFormat, $dateTime) == $date);  
 
         // Let's do some basic validation
@@ -83,26 +78,33 @@
           echo '  });';
           echo '</script>';
         } else { 
+        if ($dbOk) {
 
-            $mealTypeForDb = htmlspecialchars(trim($_POST["mealType"]));  
-            $foodGroupForDb = htmlspecialchars(trim($_POST["foodGroup"]));
-            $macrosForDb =htmlspecialchars(trim($_POST["macros"]));
-            $caloriesForDb = htmlspecialchars(trim($_POST["calories"]));  
-            $mealNameForDb= htmlspecialchars(trim($_POST["mealName"]));
-            $dateForDb = htmlspecialchars(trim($_POST["date"]));
-            // Setup a prepared statement. Alternately, we could write an insert statement - but 
-            // *only* if we escape our data using addslashes() or (better) mysqli_real_escape_string().
-            $insQuery = "insert into meal (`mealType`,`foodGroup`,`macros`, `calories`, `mealName`, `date`) values(?,?,?,?,?,?)";
+            $mealTypeForDb = trim($_POST["mealType"]);  
+            $foodGroupForDb = trim($_POST["foodGroup"]);
+            $macrosForDb =trim($_POST["macros"]);
+            $caloriesForDb = trim($_POST["calories"]);  
+            $mealNameForDb= trim($_POST["mealName"]);
+            $dateForDb = trim($_POST["date"]);
+            
+           
+            
+            $insQuery = "INSERT INTO  meal (`mealType`,`foodGroup`,`macros`, `calories`, `mealName`, `date`) values(?,?,?,?,?,?)";
             $statement = $db->prepare($insQuery);
-            // bind our variables to the question marks
+            
+           
+        
             $statement->bind_param("ssssss",$mealTypeForDb,$foodGroupForDb,$macrosForDb, $caloriesForDb, $mealNameForDB, $dateForDb);
-            // make it so:
+         
+            
             $statement->execute();
+          
 
-            // give the user some feedback
-            echo '<div class="messages"><h4>Success: ' . $statement->affected_rows . ' meal added to database.</h4>';
-            // close the prepared statement obj 
-            $statement->close();      
+     
+            echo '<div class="messages"><h4>Success: ' . $statement->affected_rows . ' meal added to your planner.</h4>';
+  
+            $statement->close();
+        }
         }
       }
     ?>
@@ -125,7 +127,7 @@
                 <br>
 
                 <label class="field" for="macros" >Macros:</label>  
-                <div class="value"><input type="text"  size="60" value="<?php echo $mealName; ?>" name="macros" id="macros"> <em>Protein, Fats, Carbs</em></div>
+                <div class="value"><input type="text"  size="60" value="<?php echo $macros; ?>" name="macros" id="macros"> <em>Protein, Fats, Carbs</em></div>
                 <br>
 
 
@@ -134,7 +136,7 @@
 
                 <br>
 
-                <label class="field" for="mealName" >Calories:</label>    
+                <label class="field" for="calories" >Calories:</label>    
                 <div class="value"><input type="text"  size="60" value="<?php echo $calories; ?>" name="calories" id="calories"> </div>
 
                 <br>
@@ -147,7 +149,55 @@
             </div>
           </fieldset>
         </form>
-  <?php include('includes/foot.inc.php'); 
+
+
+
+
+<h3>Meals</h3>
+<table id="mealTable">
+<?php
+
+
+    $query = 'select * from meal order by date';
+    $result = $db->query($query);
+    $numRecords = $result->num_rows;
+    
+ 
+    for ($i=0; $i < $numRecords; $i++) {
+      $record = $result->fetch_assoc();
+  
+      
+     
+      echo '</td><td>';
+      echo htmlspecialchars($record['mealType']) .'    ' ;
+      echo htmlspecialchars($record['foodGroup']);
+      echo '</td><td>';
+      echo htmlspecialchars($record['calories']);    
+      echo '</td><td>';
+      echo htmlspecialchars($record['macros']);
+      echo '</td><td>';
+        
+      echo htmlspecialchars($record['date']);
+      echo '</td><td>';
+      
+      echo '</td></tr>';
+   
+    }
+    
+    $result->free();
+    
+    // Finally, let's close the database
+
+  
+?>
+</table>
+
+
+
+
+  <?php include('./resources/includes/foot.inc.php'); 
   // footer info and closing tags
 ?>
+
+
 
