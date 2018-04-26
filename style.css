@@ -27,7 +27,7 @@ header {
     display: inline-block;
     text-align: center;
     color: #EBE9E9;
-    
+
 }
 #login_register {
     width: 34%;
@@ -77,6 +77,10 @@ header {
     left:0;
 }
 
+.no-bullet {
+  list-style-type: none;
+}
+
 footer {
     text-align: center;
     background-color: #740e0e;
@@ -97,7 +101,7 @@ footer {
 
 #content p, h2, h3{
     width:100%;
-    
+    text-align: center;
 }
 #lab{
     text-align: center;
@@ -118,4 +122,8 @@ footer {
     width: 84%;
     display: inline-block;
     background-color: white;
+}
+
+#save {
+  float: right;
 }

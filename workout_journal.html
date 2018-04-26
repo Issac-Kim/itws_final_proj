@@ -5,6 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <link href="./up_your_gain.css" rel="stylesheet" type="text/css"/>
+    <script src="resources/javascript/jquery-3.3.1.min.js"></script>
+    <script src="resources/javascript/calendar.js"> </script>
   </head>
   <body>
     <header>
@@ -27,57 +29,66 @@
 	</ul>
       </div>
       <ul  class="Entry">
-        <legend>Meal Entry</legend>
-        
-        <label class="field" for="workType" >Workout Type:</label>
-	
-        <select>
-          <option value="cardio">Cardio</option>
-          <option value="strength">Strength Training</option>
+        <legend>Workout Entry</legend>
+
+        <label class="field" for="workType" >Day: </label>
+
+        <select id="day">
+          <option value="sunday">Sunday</option>
+          <option value="monday">Monday</option>
+          <option value="tuesday">Tuesday</option>
+          <option value="wednesday">Wednesday</option>
+          <option value="thursday">Thursay</option>
+          <option value="friday">Friday</option>
+          <option value="saturday">Saturday</option>
         </select>
-        <br/>
-        <br/>
-            
-        
+
         <label class="field" for="workoutName" >Workout Name:</label>
-        
+
         <input type="text" size="60" value="" name="" id="workoutName"/>
-        <br/>
-        <br/>
-        
-        <label class="field" for="areaType" >Area of Focus:</label>
-          
-        <input type="text" size="60" value="" name="" id="areaType"/>
-        <br/>
-        <br/>
-            
-            
-            
-        <label class="field" for="usr_time" >Duration:</label>         
-        <input type="time" name="usr_time"/>
-        <br/>
-        <br/>
-             
-        <label class="field" for="intesity" >Workout Intensity:</label>
-	
-        <select>
-          <option value="High">High</option>
-          <option value="Moderate">Moderate</option>
-          <option value="Low">Low</option>
-	  
-        </select>
-             
-        <br/>
-        <br/>
-        <label class="field" for="Date" >Date:</label> 
-        <input id="date" type="date"/>
-            
-        <br/>
-        <br/>
-                  
+
         <button type="button"  onclick="addWork();"> Submit</button>
-                        
-            
+        <style>
+          table, th, td {
+            border: 1px solid black;
+            margin-top: 10px;
+          }
+          </style>
+        <table id="tbl" align="center">
+          <tr>
+            <th>Sunday</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+          </tr>
+          <tr>
+            <td>
+              <ul id="sunday"></ul>
+            </td>
+              <td>
+                <ul id="monday"></ul>
+              </td>
+              <td>
+                <ul id="tuesday"></ul>
+              </td>
+              <td>
+                <ul id="wednesday"></ul>
+              </td>
+              <td>
+                <ul id="thursday"></ul>
+              </td>
+              <td>
+                <ul id="friday"></ul>
+              </td>
+              <td>
+                <ul id="saturday"></ul>
+              </td>
+
+          </tr>
+        </table>
       </ul>
     </div>
     <footer>
@@ -85,47 +96,4 @@
     </footer>
   </body>
 </html>
-
-
-
-    
-            
-        
-    
-        
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     </body>
