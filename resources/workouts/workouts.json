@@ -1,12 +1,61 @@
+
 {
-    "workoutType":[
-	{
-	    "bodyPart": "Chest",
-	    "file": "chest.json"
-	},
-	{
-	    "bodyPart": "Abs",
-	    "file": "abs.json"
-	}
+    "workoutType": [
+        {
+            "bodyPart": "Abs",
+            "url": "abs.json"
+        },
+        {
+            "bodyPart": "Biceps",
+            "url": "biceps.json"
+        },
+        {
+            "bodyPart": "Calves",
+            "url": "calves.json"
+        },
+        {
+            "bodyPart": "Chest",
+            "url": "chest.json"
+        },
+        {
+            "bodyPart": "Forearms",
+            "url": "forearms.json"
+        },
+        {
+            "bodyPart": "Glutes",
+            "url": "glutes.json"
+        },
+        {
+            "bodyPart": "Hamstrings",
+            "url": "hamstrings.json"
+        },
+        {
+            "bodyPart": "Lats",
+            "url": "lats.json"
+        },
+        {
+            "bodyPart": "Lower Back",
+            "url": "lower_back.json"
+        },
+        {
+            "bodyPart": "Middle Back",
+            "url": "middle_back.json"
+        },
+        {
+            "bodyPart": "Quads",
+            "url": "quads.json"
+        },
+        {
+            "bodyPart": "Shoulder",
+            "url": "shoulder.json"
+        },
+        {
+            "bodyPart": "Traps",
+            "url": "traps.json"
+        },
+        {
+            "bodyPart": "Triceps",
+            "url": "triceps.json"
+        }
     ]
 }

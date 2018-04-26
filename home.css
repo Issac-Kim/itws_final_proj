@@ -11,15 +11,16 @@
     border-right: 1px solid;
 }
 
+#
+
 #workouts ul li{
     list-style-type: none;
 }
 
-#category_list{
+#category{
     width: 79%;
     display: inline-block;
+    text-align: center;
+    vertical-align: middle;
 }
 
-#category{
-    text-align: center;
-}
