@@ -1,15 +1,4 @@
 
-CREATE TABLE `workout` (
-
- `workoutType` varchar(100) NOT NULL,
- `workoutName` varchar(100) NOT NULL,
- `AreaFocus`  varchar(100) NOT NULL,
- `workoutIntes`  varchar(100) NOT NULL,
- `date`  DATE NOT NULL
-);
-
-
-
 CREATE TABLE `meal` (
 
  `mealType` varchar(100) NOT NULL,
