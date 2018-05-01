@@ -11,7 +11,7 @@
 
 
 
-<?php 
+<?php //Open the database.
     @ $db = new mysqli('localhost', 'root', '', 'upYourGains');
     if ($db->connect_error) {
         echo '<div class="messages">Could not connect to the database. Error: ';
@@ -19,7 +19,7 @@
     }else {
      $dbOk = true; 
     }
-  
+     //Variable holders
       $userName='';
       $password = '';  
    
@@ -29,17 +29,19 @@
       $errors = ''; 
 
     
-      $havePost = isset($_POST["save"]);
+      $havePost = isset($_GET["save"]);
 
       if ($havePost) {
-  
-        $userName = htmlspecialchars(trim($_POST["userName"]));  
-        $password = htmlspecialchars(trim($_POST["password"]));
+        //Convert all var values into htmlcharacters and takes off white space
+        $userName = htmlspecialchars(trim($_GET["userName"]));  
+        $password = htmlspecialchars(trim($_GET["password"]));
         
 
-        // Let's do some basic validation
-        $focusId = ''; // trap the first field that needs updating, better would be to save errors in an array
-
+        //Used to tell what input to focus on then there is an 
+        //error  output
+        $focusId = ''; 
+          
+        //Checks for errors and then outputs them onto page.  
         if ($userName == '') {
           $errors .= '<li>Must have a User Name</li>';
           if ($focusId == '') $focusId = '#userName';
@@ -59,18 +61,20 @@
           echo '  });';
           echo '</script>';
         } else { 
-        if ($dbOk) {
-            
+        if ($dbOk) {  //All inputs are correct so, the php 
+            //will make a get to database's table.
+             //Set sql statement for database.
              $query = "select * from users where username='$userName'";
             $statement = $db->prepare($query);
             
             $rows = $statement->affected_rows ;
-       
+            
+            //Means that the username and password is correct
             if ($rows >= 1) {
                 $_SESSION['user']=$username; // Initializing Session
                 echo '<h4>Welcome, '.$userName.'</h4>';
-
-            } else {
+                
+            } else { //Login fail
                 $error = "Username or Password is invalid";
                 echo $error;
             }
@@ -79,29 +83,26 @@
         }
       }
     ?>
-<form id="addForm" name="addForm" action="Login.php" method="post" onsubmit="return validate(this);">
-          <fieldset> 
-            <legend>Login</legend>
-            <div class="formData">
-                <label class="field" for="userName" >Username</label>  
-                <div class="value"><input type="text"  size="60" value="<?php echo $userName; ?>" name="userName" id="userName"> </div>
+<?php
+/*Creates a html form for login to the data base. Uses the upper php to get    */ ?>
+<form id="addForm" name="addForm" action="Login.php" method="get" onsubmit="return validate(this);">
+    <fieldset> 
+        <legend>Login</legend>
+        <div class="formData">
+            <label class="field" for="userName" >Username</label>  
+            <div class="value"><input type="text"  size="60" value="<?php echo $userName; ?>" name="userName" id="userName"> </div>
 
 
-                <br>
+            <br>
 
-                <label class="field" for="password" >Password:</label>  
-                <div class="value"><input type="text"  size="60" value="<?php echo $password; ?>" name="password" id="password"> </div>
+            <label class="field" for="password" >Password:</label>  
+            <div class="value"><input type="text"  size="60" value="<?php echo $password; ?>" name="password" id="password"> </div>
 
-                <br>
-              <input type="submit" value="save" id="save" name="save"/>
-            </div>
-          </fieldset>
-        </form>
-
-
-
-
-
+            <br>
+          <input type="submit" value="save" id="save" name="save"/>
+        </div>
+    </fieldset>
+</form>
 
 
 
