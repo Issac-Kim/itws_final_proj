@@ -101,14 +101,14 @@
           
 
      
-            echo '<div class="messages"><h4>Success: ' . $statement->affected_rows . ' meal added to your planner.</h4>';
+            echo '<div id="content"><h4>Success: ' . $statement->affected_rows . ' meal added to your planner.</h4>';
   
             $statement->close();
         }
         }
       }
     ?>
-
+    
     <form id="addForm" name="addForm" action="Meal.php" method="post" onsubmit="return validate(this);">
           <fieldset> 
             <legend>Add Meal</legend>

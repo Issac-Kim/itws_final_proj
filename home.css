@@ -5,9 +5,16 @@
 }
 
 #categories{
-    width: 20%;
     height: 100%;
-    display: inline-block;
+    text-align: center;
+}
+
+#categories ul li{
+    list-style-type: none;
+    display: inline;
+    text-align: center;
+    padding-right: 30px;
+    padding-left: 30px;
 }
 
 #categories h3{
@@ -18,9 +25,26 @@
     list-style-type: none;
 }
 
+#categories ul li a{
+    text-decoration: none;
+}
+
+#categories ul li a:hover{
+    
+}
+
+
+#categories ul li a:active{
+    color: green;
+}
+
+.active{
+    color: green;
+}
+
 #category{
-    width: 79%;
-    display: inline-block;
+
+
     vertical-align: top;
    text-align: center;
     border-left: 1px solid;

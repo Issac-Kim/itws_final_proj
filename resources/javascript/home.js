@@ -7,7 +7,7 @@ $(document).ready(function(){
     url: "resources/workouts/workouts.json",
     dataType: "json",
     success: function(responseData, status){
-      var output ="<h3>Muscle Group</h3><ul>";
+      var output ="<ul>";
       $.each(responseData.workoutType, function(i, item) {
         output += '<li><a class="bodyPart" href="resources/workouts/' + item.url + '" id="' + item.bodyPart + '">' + item.bodyPart + '</a></li>';
       });
@@ -30,11 +30,17 @@ $(document).ready(function(){
         }, error: function(msg){
           alert("There was a problem: " + msg.status + " " + msg.statusText);
         }
-      });
+	});
+	$('.active').removeAttr('class');
+	$(this).attr('class', 'bodyPart');
+	$(this).attr('class', 'active');
+
+
     });
     }, error: function(msg) {
       				// there was a problem
     alert("There was a problem: " + msg.status + " " + msg.statusText);
     }
   });
+
 });
