@@ -31,7 +31,7 @@
            <div id="content">
             <div id="navbar">
                 <ul>
-                  <li><a href="./home.php">Home</a></li>
+                  <li><a href="./home.html">Home</a></li>
                     <li><a href="./Meal.php">Calorie</a></li>
                   <li><a href="./workout_journal.php">Workout Journal</a></li>
                 </ul>
