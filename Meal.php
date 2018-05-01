@@ -1,6 +1,5 @@
 <?php 
   include('./resources/includes/init.inc.php'); // include the DOCTYPE and opening tags
-
 ?>
 <title>Meal Planner</title>   
 
@@ -12,14 +11,15 @@
 
 
 <?php 
+    //Open the database.
     @ $db = new mysqli('localhost', 'root', '', 'upYourGains');
-    if ($db->connect_error) {
+    if ($db->connect_error) { //Cannot access database 
         echo '<div class="messages">Could not connect to the database. Error: ';
         echo $db->connect_errno . ' - ' . $db->connect_error . '</div>';
-    }else {
+    }else { // Continues towards post new entry
      $dbOk = true; 
     }
-  
+      //Variable holders
       $userName='';
       $mealType = '';  
       $foodGroup = '';
@@ -32,11 +32,12 @@
       // hold any error messages
       $errors = ''; 
 
-    
+        
       $havePost = isset($_POST["save"]);
-
+        
+        
       if ($havePost) {
-  
+        //Convert all var values into htmlcharacters and takes off white space
         $mealType = htmlspecialchars(trim($_POST["mealType"]));  
         $foodGroup = htmlspecialchars(trim($_POST["foodGroup"]));
         $macros =htmlspecialchars(trim($_POST["macros"]));
@@ -45,15 +46,18 @@
         $date = htmlspecialchars(trim($_POST["date"]));
 
 
-    
+        //Convert to time format YYYY-MM-DD
         $dateTime = strtotime($date);
         $dateFormat = 'Y-m-d';
-          
+        
+        //Check if the input date is valid
         $dateOk = (date($dateFormat, $dateTime) == $date);  
 
-        // Let's do some basic validation
-        $focusId = ''; // trap the first field that needs updating, better would be to save errors in an array
-
+        //Used to tell what input to focus on hen there is an 
+        //error 
+        $focusId = ''; 
+        
+        //Checks for errors and then outputs them onto page.
         if ($mealType == '') {
           $errors .= '<li>Meal Type must not be blank</li>';
           if ($focusId == '') $focusId = '#mealType';
@@ -67,7 +71,7 @@
           $errors .= '<li>Enter a valid date in yyyy-mm-dd format</li>';
           if ($focusId == '') $focusId = '#date';
         }
-
+          
         if ($errors != '') {
           echo '<div class="messages"><h4>Please correct the following errors:</h4><ul>';
           echo $errors;
@@ -78,7 +82,8 @@
           echo '  });';
           echo '</script>';
         } else { 
-        if ($dbOk) {
+        if ($dbOk) { //All inputs are correct so, the php 
+            //will make a post to database's table.
 
             $mealTypeForDb = trim($_POST["mealType"]);  
             $foodGroupForDb = trim($_POST["foodGroup"]);
@@ -88,33 +93,38 @@
             $dateForDb = trim($_POST["date"]);
             
            
-            
+            //Set sql statement for database.
             $insQuery = "INSERT INTO  meal (`mealType`,`foodGroup`,`macros`, `calories`, `mealName`, `date`) values(?,?,?,?,?,?)";
             $statement = $db->prepare($insQuery);
             
            
-        
+            //Binds the variable to each ?.
             $statement->bind_param("ssssss",$mealTypeForDb,$foodGroupForDb,$macrosForDb, $caloriesForDb, $mealNameForDB, $dateForDb);
          
-            
+            //Runs statemnt
             $statement->execute();
           
 
-     
+            //Success message 
             echo '<div class="messages"><h4>Success: ' . $statement->affected_rows . ' meal added to your planner.</h4>';
-  
+            
+            //Close Database 
             $statement->close();
         }
         }
       }
     ?>
 
+
+
+<?php
+/*Creates a html form for posting the data base. Uses the upper php to post    */ ?>
     <form id="addForm" name="addForm" action="Meal.php" method="post" onsubmit="return validate(this);">
           <fieldset> 
             <legend>Add Meal</legend>
             <div class="formData">
 
-
+                
                 <label class="field" for="mealType" >Meal Type:</label>  
                 <div class="value"><input type="text"  size="60" value="<?php echo $mealType; ?>" name="mealType" id="mealType"> <em> Breakfast, Lunch, Dinner, etc. </em></div>
 
@@ -152,7 +162,7 @@
 
 
 
-
+<?php /*Creates a table retriving data from the database using a query statement, then with the result variable, echo out html with the row's values */ ?>
 <h3>Meals</h3>
 <table id="mealTable">
 <?php
@@ -166,10 +176,8 @@
     for ($i=0; $i < $numRecords; $i++) {
       $record = $result->fetch_assoc();
   
-      
-     
       echo '</td><td>';
-      echo htmlspecialchars($record['mealType']) .'    ' ;
+      echo htmlspecialchars($record['mealType']) .' |   ' ;
       echo htmlspecialchars($record['foodGroup']);
       echo '</td><td>';
       echo htmlspecialchars($record['calories']);    
@@ -183,10 +191,10 @@
       echo '</td></tr>';
    
     }
-    
+    // Finally, let's close the database
     $result->free();
     
-    // Finally, let's close the database
+    
 
   
 ?>
