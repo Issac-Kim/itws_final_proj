@@ -4,9 +4,35 @@
     width: 100%;
 }
 
+#categoryTable{
+    margin-right:auto;
+    margin-left:auto;
+    table-layout: fixed;
+    width:100%;
+    border-spacing: 0;
+}
+
+#categoryTable td{
+    
+}
+
 #categories{
     height: 100%;
     text-align: center;
+    width: 100%;
+    background-color: #D3D3D3;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+}
+
+#categories ul{
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border-bottom: 0;
 }
 
 #categories ul li{
@@ -17,30 +43,23 @@
     padding-left: 30px;
 }
 
-#categories h3{
-  text-align: center;
-}
-
-#workouts ul li{
-    list-style-type: none;
-}
-
-#categories ul li a{
-    text-decoration: none;
-}
-
-#categories ul li a:hover{
-    
-}
-
-
-#categories ul li a:active{
-    color: green;
-}
-
 .active{
-    color: green;
+    background-color: white;
+    color: black;
+    margin-bottom: 1px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 }
+#categories table td a{
+    font-size: 17px;
+    text-decoration: none;
+    color: red;
+}
+
+
+
+
+
 
 #category{
 

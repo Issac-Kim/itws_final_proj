@@ -12,7 +12,7 @@
 
 
 <?php 
-    @ $db = new mysqli('localhost', 'root', '', 'upYourGains');
+    @ $db = new mysqli('localhost', 'root', 'issachkim99', 'upYourGains');
     if ($db->connect_error) {
         echo '<div class="messages">Could not connect to the database. Error: ';
         echo $db->connect_errno . ' - ' . $db->connect_error . '</div>';

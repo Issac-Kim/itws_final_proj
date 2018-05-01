@@ -53,6 +53,14 @@ header {
     text-align: center;
     color: #fff;
     background-color: #f44b4b;
+    margin-bottom: 0;
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+#navbar ul{
+    margin-bottom: 0;
+    border-bottom: 0;
+    padding-bottom: 0;
 }
 #navbar ul li{
     list-style-type: none;

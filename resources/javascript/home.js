@@ -7,11 +7,11 @@ $(document).ready(function(){
     url: "resources/workouts/workouts.json",
     dataType: "json",
     success: function(responseData, status){
-      var output ="<ul>";
+      var output ="<table id='categoryTable'><tr>";
       $.each(responseData.workoutType, function(i, item) {
-        output += '<li><a class="bodyPart" href="resources/workouts/' + item.url + '" id="' + item.bodyPart + '">' + item.bodyPart + '</a></li>';
+        output += '<td><a class="bodyPart" href="resources/workouts/' + item.url + '" id="' + item.bodyPart + '">' + item.bodyPart + '</a></td>';
       });
-      output += "</ul>"
+      output += "</tr></table>"
     $('#categories').html(output);
     $(".bodyPart").on("click", function(e){
         e.preventDefault();
@@ -33,7 +33,7 @@ $(document).ready(function(){
 	});
 	$('.active').removeAttr('class');
 	$(this).attr('class', 'bodyPart');
-	$(this).attr('class', 'active');
+	$(this).parent().attr('class', 'active');
 
 
     });

@@ -2,10 +2,8 @@
 {
     "workout": [
         {
-            "name_of_workout": "",
-            "areas_of_focus": "",
-            "description": "",
-            "instruction": ""
+            "name_of_workout": "Shrug",
+            "instruction": "This requires either dumbbells or a barbell. <br> 1. Grip the dumbbell and hold it to your sides. Or grip the barbell with your palms facing you and hold the barbell in front of your hips. <br> 2. Shrug your shoulders towards your ears. <br> 3. Slowly lower the weights back to your hips. "
         }
     ]
 }
